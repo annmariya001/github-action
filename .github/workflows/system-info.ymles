@@ -1,0 +1,12 @@
+name: System Info
+
+on: [push]
+
+jobs:
+  info:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: pwd
+      - run: ls -la
+      - run: uname -a

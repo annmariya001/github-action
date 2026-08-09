@@ -1,4 +1,4 @@
-name: Secret Practice
+name: Build Report
 
 on:
   push:
@@ -6,11 +6,16 @@ on:
       - main
 
 jobs:
-  test-secret:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Use Secret
-        run: echo "Secret is configured"
-        env:
-          MY_SECRET: ${{ secrets.MY_SECRET }}
+      - name: Create Report
+        run: |
+          echo "Build completed" > report.txt
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-report
+          path: report.txt
